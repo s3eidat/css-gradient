@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>CSS Gradient — Free Visual CSS Gradient Generator | S3eidat Tools</title>
+<meta name="description" content="Build linear, radial and conic CSS gradients visually: drag color stops, turn the angle dial, pick presets, copy the CSS or export a PNG at any size. Free and private.">
+<meta property="og:title" content="CSS Gradient — build beautiful CSS gradients visually">
+<meta property="og:description" content="Linear, radial and conic gradients with draggable stops, presets and PNG export. Runs in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="css-gradient">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>CSS Gradient</h1>
+    <p>Drag color stops, turn the dial, start from a preset. Copy the CSS or export the gradient as a PNG at any size.</p>
+  </section>
+
+  <div class="cg-grid">
+    <section class="card stack">
+      <div class="preview checker" id="preview-wrap"><div class="preview-fill" id="preview"></div></div>
+      <div class="row between">
+        <h2>CSS</h2>
+        <button class="btn small primary" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy CSS</button>
+      </div>
+      <pre class="out" id="css" tabindex="0"></pre>
+      <div class="row export">
+        <label class="field">Width <input class="input" id="w" type="number" min="1" max="8000" value="1920"></label>
+        <span class="x-sep">×</span>
+        <label class="field">Height <input class="input" id="h" type="number" min="1" max="8000" value="1080"></label>
+        <button class="btn" id="png"><svg class="i"><use href="#i-download"/></svg>PNG</button>
+      </div>
+    </section>
+
+    <section class="card stack">
+      <div class="row between">
+        <div class="seg" id="type" role="group" aria-label="Gradient type">
+          <button aria-pressed="true" data-v="linear">Linear</button>
+          <button aria-pressed="false" data-v="radial">Radial</button>
+          <button aria-pressed="false" data-v="conic">Conic</button>
+        </div>
+        <button class="btn ghost small" id="random"><svg class="i"><use href="#i-refresh"/></svg>Random</button>
+      </div>
+
+      <div>
+        <div class="row between"><span class="lbl">Color stops</span><span class="faint">Click the bar to add · drag to move</span></div>
+        <div class="stopbar checker mt" id="bar"><div class="bar-fill" id="bar-fill"></div><div class="handles" id="handles"></div></div>
+      </div>
+
+      <div class="stop-edit" id="stop-edit">
+        <input type="color" id="s-color" aria-label="Stop color">
+        <label class="field">Hex <input class="input mono" id="s-hex" spellcheck="false" autocomplete="off" dir="ltr"></label>
+        <label class="field">Position % <input class="input" id="s-pos" type="number" min="0" max="100" step="1"></label>
+        <label class="field">Opacity <input type="range" id="s-alpha" min="0" max="100"></label>
+        <button class="btn ghost icon" id="s-del" aria-label="Delete stop" title="Delete stop"><svg class="i"><use href="#i-trash"/></svg></button>
+      </div>
+
+      <div class="geo">
+        <div class="dial-wrap" id="dial-wrap">
+          <div class="dial" id="dial" role="slider" tabindex="0" aria-label="Angle" aria-valuemin="0" aria-valuemax="359"><span class="knob" id="knob"></span></div>
+          <label class="field">Angle° <input class="input" id="angle" type="number" min="0" max="359"></label>
+        </div>
+        <div class="stack grow" id="pos-box">
+          <div class="seg" id="shape" role="group" aria-label="Radial shape">
+            <button aria-pressed="false" data-v="circle">Circle</button>
+            <button aria-pressed="true" data-v="ellipse">Ellipse</button>
+          </div>
+          <label class="field">Center X <span class="faint" id="px-v"></span><input type="range" id="px" min="0" max="100"></label>
+          <label class="field">Center Y <span class="faint" id="py-v"></span><input type="range" id="py" min="0" max="100"></label>
+        </div>
+      </div>
+
+      <div>
+        <span class="lbl">Presets</span>
+        <div class="presets mt" id="presets"></div>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
